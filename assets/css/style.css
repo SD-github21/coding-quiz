@@ -3,4 +3,21 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-};
+}
+
+main {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.instructions {
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    padding: 25px;
+    width: 50%;
+
+}
+
