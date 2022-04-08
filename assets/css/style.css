@@ -34,3 +34,15 @@ main {
 
 }
 
+.answer-choices {
+
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    padding: 25px;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+
+}
+
