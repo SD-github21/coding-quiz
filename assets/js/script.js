@@ -55,10 +55,8 @@ var questions = [
 ];
 console.log(questions);
         var quiz = function (id) {
-                var id = 0;
-                if (id < questions.length) {
-                        id++
-                };
+                
+                for (var id = 0; id<questions.length; id++) {
                 // //set the page to blank
                 instructionsEl.innerHTML = "";
                 
@@ -110,7 +108,7 @@ console.log(questions);
                 console.log(choice4.textContent = questions[id].answer[3].choice);
               
                 var userchoice = "";
-
+        };
                 //show user choice for choice1
                 timer();
 
