@@ -115,7 +115,6 @@ var quiz = function (id) {
 
         
                 //show user choice for choice1
-                timer();
 
         };
 
@@ -138,6 +137,12 @@ var quiz = function (id) {
                 //           timeLeft - 15;
 
                 //   }
+
+                //   else if (id=0) {
+                //         timerEl.textContent = '';
+                //         clearInterval(timeInterval);                          
+                //   }
+
                   else { //once it hits 0, it clears the timer, and then also calls displayMessage function, and waits 1000 milliseconds before running the next function
                     timerEl.textContent = '';
                     clearInterval(timeInterval);
@@ -145,8 +150,10 @@ var quiz = function (id) {
                 }, 1000);
               };
 
+        var id = 0
         var iterate = function(){
-                var id = 0
+                timer();
+
                 quiz(id);
                 console.log("new loop");
                 if (id < questions.length) {
