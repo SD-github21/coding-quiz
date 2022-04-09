@@ -5,7 +5,6 @@ var quizEl = document.querySelector("#quiz")
 var choicesEl = document.querySelector("#choices");
 var questionEl = document.querySelector("#question");
 
-
 var questions = [
 
     { id: 0,
@@ -110,13 +109,46 @@ var quiz = function (id) {
                 choice2.value = questions[id].answer[1].correctAnswer;
                 choice3.value = questions[id].answer[2].correctAnswer;
                 choice4.value = questions[id].answer[3].correctAnswer;
-       
 
+                var selected = "";
+  
+                // Show user's choices for each question
+                choice1.addEventListener("click", () => {
+                selected = choice1.value;
+                console.log(selected);
+                    })
+                    
+                choice2.addEventListener("click", () => {
+                selected = choice2.value;
+                console.log(selected);
+                     })
+                
+                choice3.addEventListener("click", () => {
+                selected = choice3.value;
+                console.log(selected);
+                     })
+                                    
+                choice4.addEventListener("click", () => {
+                selected = choice4.value;
+                console.log(selected);
+                      })
+                
+  
+
+                // if (choice1.value === false) {
+                //         timeLeft = timeLeft - 15;
+                //         console.log(timeLeft);
+                // }
+
+     
+
+                
         };
 
-        
+
+        var timeLeft=75;
         function timer() {
-                var timeLeft = 75;        
+                // var timeLeft = 75;        
                 var timerEl = document.querySelector("#timer");
                 console.log(timerEl);
               
@@ -126,10 +158,7 @@ var quiz = function (id) {
                     timerEl.textContent = "Timer: " + timeLeft;
                     timeLeft--;
                   } //
-                //   else if (answerChoice = wrong){
-                //           timeLeft - 15;
-
-                //   }
+                
 
                 //   else if (id=0) {
                 //         timerEl.textContent = '';
@@ -147,7 +176,6 @@ var quiz = function (id) {
         var iterate = function(){
                 timer();
                 quiz(id);
-                console.log("new loop");
                 if (id < questions.length) {
                 quizEl.addEventListener("click", function() {
                         id++
