@@ -1,4 +1,4 @@
-var mainEl = document.querySelector("#page-content"); 
+var instructionsEl = document.querySelector("#instructions"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
 var choicesEl = document.querySelector("#choices");
 
@@ -57,7 +57,7 @@ console.log(questions);
         var quiz = function () {
 
                 // //set the page to blank
-                // mainEl.innerHTML = "";
+                instructionsEl.innerHTML = "";
                 
 
                 // setting the question element to a variable
