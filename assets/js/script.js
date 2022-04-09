@@ -1,7 +1,9 @@
+var mainEl = document.querySelector("#page-content");
 var instructionsEl = document.querySelector("#instructions"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
 var quizEl = document.querySelector("#quiz")
 var choicesEl = document.querySelector("#choices");
+var questionEl = document.querySelector("#question");
 
 
 var questions = [
@@ -64,13 +66,11 @@ var quiz = function (id) {
 
                 //set the questions to blank
                 choicesEl.innerHTML ="";
+                questionEl.innerHTML ="";
 
-                // setting the question element to a variable
-                var question = document.querySelector("#question");
-                console.log(question);
 
                 
-                console.log(question.textContent = questions[id].question);
+                questionEl.textContent = questions[id].question;
 
                 var choice1El = document.createElement("button");
                 choice1El.className = "choice";
@@ -100,18 +100,14 @@ var quiz = function (id) {
                 var choice2 = document.querySelector("#choice2");
                 var choice3 = document.querySelector("#choice3");
                 var choice4 = document.querySelector("#choice4");
-                console.log(choice1);
-                console.log(choice2);
-                console.log(choice3);
-                console.log(choice4);
-
+                
                 // setting answer choice text
-                console.log(choice1.textContent = questions[id].answer[0].choice);
-                console.log(choice2.textContent = questions[id].answer[1].choice);
-                console.log(choice3.textContent = questions[id].answer[2].choice);
-                console.log(choice4.textContent = questions[id].answer[3].choice);
+                choice1.textContent = questions[id].answer[0].choice;
+                choice2.textContent = questions[id].answer[1].choice;
+                choice3.textContent = questions[id].answer[2].choice;
+                choice4.textContent = questions[id].answer[3].choice;
               
-                // var userchoice = "";
+                
 
         
                 //show user choice for choice1
@@ -163,10 +159,6 @@ var quiz = function (id) {
                 })
                         
                 }
-                // add the else to get to the results screen
-                // else  {
-                // go to results
-                // }
                  
              };
 
