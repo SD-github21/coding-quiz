@@ -150,7 +150,7 @@ var quiz = function (id) {
                 }, 1000);
               };
 
-        var id = 0
+        var id = 0;
         var iterate = function(){
                 timer();
 
@@ -161,9 +161,15 @@ var quiz = function (id) {
                         id++
                         quiz(id);
                 })
-        
+                        
                 }
+                // add the else to get to the results screen
+                // else  {
+                // go to results
+                // }
                  
              };
 
+
 startQuizEl.addEventListener("click", iterate);
+
