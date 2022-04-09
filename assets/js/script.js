@@ -107,10 +107,13 @@ var quiz = function (id) {
                 choice3.textContent = questions[id].answer[2].choice;
                 choice4.textContent = questions[id].answer[3].choice;
               
-                
+                // linking the true or false values to the choices
+                choice1.value = questions[id].answer[0].correctAnswer;
+                choice2.value = questions[id].answer[1].correctAnswer;
+                choice3.value = questions[id].answer[2].correctAnswer;
+                choice4.value = questions[id].answer[3].correctAnswer;
 
         
-                //show user choice for choice1
 
         };
 
@@ -149,7 +152,6 @@ var quiz = function (id) {
         var id = 0;
         var iterate = function(){
                 timer();
-
                 quiz(id);
                 console.log("new loop");
                 if (id < questions.length) {
@@ -164,4 +166,3 @@ var quiz = function (id) {
 
 
 startQuizEl.addEventListener("click", iterate);
-
