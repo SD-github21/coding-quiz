@@ -81,4 +81,24 @@ console.log(questions);
 
         };
 
+        function countdown() {
+                var timeLeft = 75;
+              
+                var timerEl = document.querySelector("#timer");
+                console.log(timerEl);
+              
+                var timeInterval = setInterval(function () {
+                  //starting at time 75 if the time is > 0 then it will subtract 1 per second
+                  if (timeLeft > 1) {
+                    timerEl.textContent = "Timer: " + timeLeft;
+                    timeLeft--;
+                  } //
+                  else { //once it hits 0, it clears the timer, and then also calls displayMessage function, and waits 1000 milliseconds before running the next function
+                    timerEl.textContent = '';
+                    clearInterval(timeInterval);
+                    }
+                }, 1000);
+              }
+              
+countdown();
 quiz();
