@@ -58,7 +58,7 @@ console.log(questions);
 
                 // //set the page to blank
                 // mainEl.innerHTML = "";
-
+                
 
                 // setting the question element to a variable
                 var question = document.querySelector("#question");
@@ -109,7 +109,7 @@ console.log(questions);
                 var userchoice = "";
 
                 //show user choice for choice1
-                
+                timer();
 
         };
 
@@ -133,4 +133,4 @@ console.log(questions);
               }
 
 startQuizEl.addEventListener("click", quiz)              
-timer();
+
