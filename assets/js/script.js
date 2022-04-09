@@ -1,5 +1,6 @@
 var instructionsEl = document.querySelector("#instructions"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
+var quizEl = document.querySelector("#quiz")
 var choicesEl = document.querySelector("#choices");
 
 
@@ -108,6 +109,7 @@ console.log(questions);
                 console.log(choice4.textContent = questions[id].answer[3].choice);
               
                 var userchoice = "";
+                quizEl.addEventListener("click", quiz);
         };
                 //show user choice for choice1
                 timer();
