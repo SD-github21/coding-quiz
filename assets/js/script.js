@@ -67,9 +67,7 @@ var quiz = function (id) {
                 //set the questions to blank
                 choicesEl.innerHTML ="";
                 questionEl.innerHTML ="";
-
-
-                
+               
                 questionEl.textContent = questions[id].question;
 
                 var choice1El = document.createElement("button");
@@ -112,16 +110,13 @@ var quiz = function (id) {
                 choice2.value = questions[id].answer[1].correctAnswer;
                 choice3.value = questions[id].answer[2].correctAnswer;
                 choice4.value = questions[id].answer[3].correctAnswer;
-
-        
+       
 
         };
 
+        var timeLeft = 75;        
         
         function timer() {
-
-
-                var timeLeft = 75;        
          
                 var timerEl = document.querySelector("#timer");
                 console.log(timerEl);
