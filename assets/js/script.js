@@ -54,8 +54,11 @@ var questions = [
         }                 
 ];
 console.log(questions);
-        var quiz = function () {
-
+        var quiz = function (id) {
+                var id = 0;
+                if (id < questions.length) {
+                        id++
+                };
                 // //set the page to blank
                 instructionsEl.innerHTML = "";
                 
@@ -65,7 +68,7 @@ console.log(questions);
                 console.log(question);
 
                 
-                console.log(question.textContent = questions[0].question);
+                console.log(question.textContent = questions[id].question);
 
                 var choice1El = document.createElement("button");
                 choice1El.className = "choice";
@@ -101,10 +104,10 @@ console.log(questions);
                 console.log(choice4);
 
                 // setting answer choice text
-                console.log(choice1.textContent = questions[0].answer[0].choice);
-                console.log(choice2.textContent = questions[0].answer[1].choice);
-                console.log(choice3.textContent = questions[0].answer[2].choice);
-                console.log(choice4.textContent = questions[0].answer[3].choice);
+                console.log(choice1.textContent = questions[id].answer[0].choice);
+                console.log(choice2.textContent = questions[id].answer[1].choice);
+                console.log(choice3.textContent = questions[id].answer[2].choice);
+                console.log(choice4.textContent = questions[id].answer[3].choice);
               
                 var userchoice = "";
 
