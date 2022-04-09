@@ -135,10 +135,10 @@ var quiz = function (id) {
                 
   
 
-                // if (choice1.value === false) {
-                //         timeLeft = timeLeft - 15;
-                //         console.log(timeLeft);
-                // }
+                if (selected !== true) {
+                        timeLeft = timeLeft - 15;
+                        console.log(timeLeft);
+                }
 
      
 
