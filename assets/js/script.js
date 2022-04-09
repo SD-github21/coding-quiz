@@ -1,3 +1,6 @@
+var mainEl = document.querySelector("#page-content"); 
+var startQuizEl = document.querySelector("#start-quiz"); 
+
 var questions = [
 
     { id: 0,
@@ -51,6 +54,10 @@ var questions = [
 console.log(questions);
         var quiz = function () {
 
+                //set the page to blank
+                mainEl.innerHTML = "";
+
+
                 // setting the question element to a variable
                 var question = document.querySelector("#question");
                 console.log(question);
@@ -81,7 +88,7 @@ console.log(questions);
 
         };
 
-        function countdown() {
+        function timer() {
                 var timeLeft = 75;
               
                 var timerEl = document.querySelector("#timer");
@@ -99,6 +106,6 @@ console.log(questions);
                     }
                 }, 1000);
               }
-              
-countdown();
-quiz();
+
+startQuizEl.addEventListener("click", quiz)              
+timer();
