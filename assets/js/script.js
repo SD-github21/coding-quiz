@@ -114,10 +114,9 @@ var quiz = function (id) {
 
         };
 
-        var timeLeft = 75;        
         
         function timer() {
-         
+                var timeLeft = 75;        
                 var timerEl = document.querySelector("#timer");
                 console.log(timerEl);
               
