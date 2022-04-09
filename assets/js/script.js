@@ -55,12 +55,15 @@ var questions = [
         }                 
 ];
 console.log(questions);
-        var quiz = function (id) {
+
+var quiz = function (id) {
                 
-                for (var id = 0; id<questions.length; id++) {
+
                 // //set the page to blank
                 instructionsEl.innerHTML = "";
-                
+
+                //set the questions to blank
+                choicesEl.innerHTML ="";
 
                 // setting the question element to a variable
                 var question = document.querySelector("#question");
@@ -108,17 +111,20 @@ console.log(questions);
                 console.log(choice3.textContent = questions[id].answer[2].choice);
                 console.log(choice4.textContent = questions[id].answer[3].choice);
               
-                var userchoice = "";
-                quizEl.addEventListener("click", quiz);
-        };
+                // var userchoice = "";
+
+        
                 //show user choice for choice1
                 timer();
 
         };
 
+        
         function timer() {
-                var timeLeft = 75;
-              
+
+
+                var timeLeft = 75;        
+         
                 var timerEl = document.querySelector("#timer");
                 console.log(timerEl);
               
@@ -128,12 +134,29 @@ console.log(questions);
                     timerEl.textContent = "Timer: " + timeLeft;
                     timeLeft--;
                   } //
+                //   else if (answerChoice = wrong){
+                //           timeLeft - 15;
+
+                //   }
                   else { //once it hits 0, it clears the timer, and then also calls displayMessage function, and waits 1000 milliseconds before running the next function
                     timerEl.textContent = '';
                     clearInterval(timeInterval);
                     }
                 }, 1000);
-              }
+              };
 
-startQuizEl.addEventListener("click", quiz)              
+        var iterate = function(){
+                var id = 0
+                quiz(id);
+                console.log("new loop");
+                if (id < questions.length) {
+                quizEl.addEventListener("click", function() {
+                        id++
+                        quiz(id);
+                })
+        
+                }
+                 
+             };
 
+startQuizEl.addEventListener("click", iterate);
