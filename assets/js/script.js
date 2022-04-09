@@ -1,5 +1,7 @@
 var mainEl = document.querySelector("#page-content"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
+var choicesEl = document.querySelector("#choices");
+
 
 var questions = [
 
@@ -54,8 +56,8 @@ var questions = [
 console.log(questions);
         var quiz = function () {
 
-                //set the page to blank
-                mainEl.innerHTML = "";
+                // //set the page to blank
+                // mainEl.innerHTML = "";
 
 
                 // setting the question element to a variable
@@ -64,6 +66,29 @@ console.log(questions);
 
                 
                 console.log(question.textContent = questions[0].question);
+
+                var choice1El = document.createElement("button");
+                choice1El.className = "choice";
+                choice1El.setAttribute("id", "choice1");
+
+                var choice2El = document.createElement("button");
+                choice2El.className = "choice";
+                choice2El.setAttribute("id", "choice2");
+
+                var choice3El = document.createElement("button");
+                choice3El.className = "choice";
+                choice3El.setAttribute("id", "choice3");
+
+                var choice4El = document.createElement("button");
+                choice4El.className = "choice";
+                choice4El.setAttribute("id", "choice4");
+
+                choicesEl.appendChild(choice1El);
+                choicesEl.appendChild(choice2El);
+                choicesEl.appendChild(choice3El);
+                choicesEl.appendChild(choice4El);
+
+
 
                 // setting answer choices to variables
                 var choice1 = document.querySelector("#choice1");
