@@ -1,5 +1,6 @@
 var mainEl = document.querySelector("#page-content");
 var scoreElLink = document.querySelector("#high-scores");
+var finalScore = document.querySelector("#final-score");
 var instructionsEl = document.querySelector("#instructions"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
 var quizEl = document.querySelector("#quiz")
@@ -233,9 +234,6 @@ var timeLeft=100;
                 submitButton.textContent = "Submit";
 
 
-
-
-
                 inputEl.appendChild(inputText1);
                 inputEl.appendChild(inputText2);
                 inputEl.appendChild(inputLabel);
@@ -244,8 +242,9 @@ var timeLeft=100;
                 
                 
                 submitButton.addEventListener("click", function submit () {
-                        console.log(inputBox.value);
-                        localStorage.setItem("initials", inputBox.value);   
+                        var value = inputBox.value;
+                        console.log(value);
+                        localStorage.setItem("initials", value);   
                         finalResults();            
         });
 
@@ -255,6 +254,20 @@ var timeLeft=100;
                inputEl.innerHTML = "" ;
                timerEl.innerHTML ="";
                scoreElLink.innerHTML = "";
+
+               var finalTime = localStorage.getItem("Final time");
+               var initials = localStorage.getItem("initials");   
+
+                var finalText1 = document.createElement("h2");
+                finalText1.textContent = "High Scores";
+
+                var finalText2 = document.createElement("p");
+                finalText2.textContent = "1. " + initials + " - " + finalTime;
+
+                finalScore.appendChild(finalText1);
+                finalScore.appendChild(finalText2);
+
+                
 
         }
 
