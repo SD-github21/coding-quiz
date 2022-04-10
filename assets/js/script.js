@@ -10,6 +10,7 @@ var nextEl = document.createElement("button");
                 nextEl.setAttribute("id", "next");
 
 var timerEl = document.querySelector("#timer");
+var inputEl = document.querySelector("#input-screen");
 
 
 
@@ -205,9 +206,22 @@ var timeLeft=100;
              };
 
         var results = function() {
-                mainEl.innerHTML ="";
+                choicesEl.innerHTML ="";
+                questionEl.innerHTML ="";
                 localStorage.getItem("Final time", timeLeft);
                 timerEl.textContent = "Time: " + timeLeft;
+
+                var inputText1 = document.createElement("h2");
+                inputText1.textContent = "All done!"
+
+                var inputText2 = document.createElement("h3");
+                inputText2.textContent = "Your final score is " + timeLeft+".";
+
+
+
+                inputEl.appendChild(inputText1);
+                inputEl.appendChild(inputText2);
+                
                 
 
         }
