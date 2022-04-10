@@ -5,6 +5,11 @@ var quizEl = document.querySelector("#quiz")
 var choicesEl = document.querySelector("#choices");
 var questionEl = document.querySelector("#question");
 
+var nextEl = document.createElement("button");
+                nextEl.className = "choice";
+                nextEl.setAttribute("id", "next");
+
+
 var questions = [
 
     { id: 0,
@@ -85,11 +90,15 @@ var quiz = function (id) {
                 choice4El.className = "choice";
                 choice4El.setAttribute("id", "choice4");
 
+                // var nextEl = document.createElement("button");
+                // nextEl.className = "choice";
+                // nextEl.setAttribute("id", "next");
+
                 choicesEl.appendChild(choice1El);
                 choicesEl.appendChild(choice2El);
                 choicesEl.appendChild(choice3El);
                 choicesEl.appendChild(choice4El);
-
+                choicesEl.appendChild(nextEl);
 
 
                 // setting answer choices to variables
@@ -103,6 +112,7 @@ var quiz = function (id) {
                 choice2.textContent = questions[id].answer[1].choice;
                 choice3.textContent = questions[id].answer[2].choice;
                 choice4.textContent = questions[id].answer[3].choice;
+                nextEl.textContent = "Next";
               
                 // linking the true or false values to the choices
                 choice1.value = questions[id].answer[0].correctAnswer;
@@ -135,13 +145,16 @@ var quiz = function (id) {
                 
   
 
-                if (selected !== true) {
-                        timeLeft = timeLeft - 15;
-                        console.log(timeLeft);
-                }
+                // if (selected === false) {
+                //         timeLeft = timeLeft - 15;
+                //         console.log(timeLeft);
+                // }
+                // else {
+                //         timeLeft=timeLeft
+                // }
 
-     
-
+       
+                
                 
         };
 
@@ -177,7 +190,7 @@ var quiz = function (id) {
                 timer();
                 quiz(id);
                 if (id < questions.length) {
-                quizEl.addEventListener("click", function() {
+                next.addEventListener("click", function() {
                         id++
                         quiz(id);
                 })
