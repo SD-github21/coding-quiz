@@ -1,5 +1,6 @@
+// Create main variables to access elements within functions
 var mainEl = document.querySelector("#page-content");
-var scoreElLink = document.querySelector("#high-scores");
+var welcomeEl = document.querySelector("#welcome");
 var finalScore = document.querySelector("#final-score");
 var instructionsEl = document.querySelector("#instructions"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
@@ -15,7 +16,7 @@ var timerEl = document.querySelector("#timer");
 var inputEl = document.querySelector("#input-screen");
 
 
-
+// Create variable to hold quiz questions
 var questions = [
 
     { id: 0,
@@ -71,9 +72,9 @@ var questions = [
                 correct: "4. console.log"                        
         }                 
 ];
-console.log(questions);
 
-var quiz = function (id) {
+        // Create Quiz Function 
+        var quiz = function (id) {
                 
                 // //set the page to blank
                 instructionsEl.innerHTML = "";
@@ -81,12 +82,12 @@ var quiz = function (id) {
                 //set the questions to blank
                 choicesEl.innerHTML ="";
                 questionEl.innerHTML ="";
-               
+
+                // create the quiz questions and answer choices               
                 questionEl.textContent = questions[id].question;
 
                 var choice1El = document.createElement("button");
-                choice1El.className = "choice";
-        
+                choice1El.className = "choice";       
                 choice1El.setAttribute("id", "choice1");
 
                 var choice2El = document.createElement("button");
@@ -102,23 +103,21 @@ var quiz = function (id) {
                 choice4El.setAttribute("id", "choice4");
 
 
+                // append choices to the div
                 choicesEl.appendChild(choice1El);
                 choicesEl.appendChild(choice2El);
                 choicesEl.appendChild(choice3El);
                 choicesEl.appendChild(choice4El);
                 choicesEl.appendChild(nextEl);
-
-
                 
-                // // setting answer choice text
+                // setting answer choice text
                 choice1El.textContent = questions[id].answer[0].choice;
                 choice2El.textContent = questions[id].answer[1].choice;
                 choice3El.textContent = questions[id].answer[2].choice;
                 choice4El.textContent = questions[id].answer[3].choice;
-                nextEl.textContent = "Next";
-              
+                nextEl.textContent = "Next";            
  
-                // Deduct points for timer when an answer choice is wrong
+                // deduct points for timer when an answer choice is wrong
                 choice1El.addEventListener("click", () => {
                         if (questions[id].correct === choice1El.textContent) {
                              timeLeft = timeLeft;
@@ -140,7 +139,7 @@ var quiz = function (id) {
                                      timeLeft = timeLeft - 15;
                                      console.log(timeLeft);
                                         
-                                }})
+                                }});
 
                 choice3El.addEventListener("click", () => {
                         if (questions[id].correct === choice3El.textContent) {
@@ -151,7 +150,7 @@ var quiz = function (id) {
                              timeLeft = timeLeft - 15;
                              console.log(timeLeft);
                                 
-                        }})
+                        }});
 
                 choice4El.addEventListener("click", () => {
                         if (questions[id].correct === choice4El.textContent) {
@@ -166,15 +165,19 @@ var quiz = function (id) {
                         }});   
                
         };
-
+        // End Quiz Function
         
+// Set variable for timer to 75
+var timeLeft=75;
 
-var timeLeft=100;
 
-
+        // Create the iterate function which will allow the user to interate through quiz questions while also keeping a timer going
         var iterate = function(){
+
+                // set id to 0
                 var id = 0;
 
+                // create an interval function which will allow for a timer to run 
                 var timeInterval = setInterval(function () {
                         if (timeLeft > 1) {
                           timerEl.textContent = "Timer: " + timeLeft;
@@ -186,39 +189,48 @@ var timeLeft=100;
                           clearInterval(timeInterval);
                           }
                       }, 1000);
-      
+                
+                // call the quiz function 
                 quiz(id);
-
+                
+                // create a next button attached to a function that will allow the user to click through questions
                 next.addEventListener("click", function () {
                         if (id < questions.length - 1) {
                                 id++;
                                 quiz(id);
                                 console.log(id);
                         }
+                        // when quiz is over or time is 0, clear the timer and/or save time left which is the final score to localstorage
                         else if (id >= questions.length - 1 || timeLeft === 0) {
                                 timerEl.textContent = "";
                                 clearInterval(timeInterval);
                                 console.log("Final time =" + timeLeft);
                                 localStorage.setItem("Final time", timeLeft);
-                                submitInit();
-                                
+                                submitInit();                               
                         }
-                });                
-                 
-             };
+                });               
+        };
+        // End Iterate function
 
+        // Create Submit Initials function
         var submitInit = function() {
+
+                // clear previous screen with quiz questions and choices
                 choicesEl.innerHTML ="";
                 questionEl.innerHTML ="";
+
+                // get final score from localStorage 
                 localStorage.getItem("Final time", timeLeft);
                 timerEl.textContent = "Time: " + timeLeft;
 
+                // create submit initials screen indicating ending of quiz
                 var inputText1 = document.createElement("h2");
                 inputText1.textContent = "All done!"
 
                 var inputText2 = document.createElement("h3");
                 inputText2.textContent = "Your final score is " + timeLeft+".";
 
+                // create an input box to obtain the user's initials
                 var inputBox = document.createElement("input");
                 inputBox.type = "text";
                 inputBox.setAttribute("id", "input");
@@ -228,50 +240,55 @@ var timeLeft=100;
                 inputLabel.setAttribute("id", "label");
                 inputLabel.innerHTML = "Enter initials: ";
 
+                // create a submit button
                 var submitButton = document.createElement("button");
                 submitButton.className = "btn";
                 submitButton.setAttribute("id", "submitBtn");
                 submitButton.textContent = "Submit";
 
-
+                // append all newly created elements to div
                 inputEl.appendChild(inputText1);
                 inputEl.appendChild(inputText2);
                 inputEl.appendChild(inputLabel);
                 inputEl.appendChild(inputBox);
                 inputEl.appendChild(submitButton);
                 
-                
+                // add an event listener to submit button to save the initials to local storage and move to final results page
                 submitButton.addEventListener("click", function submit () {
                         var value = inputBox.value;
                         console.log(value);
                         localStorage.setItem("initials", value);   
                         finalResults();            
-        });
+                });
 
         };
+        // End Submit Initials function 
 
+        // Create Final Results function
         var finalResults = function() {
-               inputEl.innerHTML = "" ;
-               timerEl.innerHTML ="";
-               scoreElLink.innerHTML = "";
+               
+                // clear previous submit initials screen 
+                inputEl.innerHTML = "" ;
+                timerEl.innerHTML ="";
+                welcomeEl.innerHTML ="";
 
-               var finalTime = localStorage.getItem("Final time");
-               var initials = localStorage.getItem("initials");   
+                // obtain the high score information from localStorage
+                var finalTime = localStorage.getItem("Final time");
+                var initials = localStorage.getItem("initials");   
 
+                // create the high scores screen with score display
                 var finalText1 = document.createElement("h2");
                 finalText1.textContent = "High Scores";
 
                 var finalText2 = document.createElement("p");
                 finalText2.textContent = "1. " + initials + " - " + finalTime;
 
+                // append newly create elements to div
                 finalScore.appendChild(finalText1);
-                finalScore.appendChild(finalText2);
-
-
-
-                
-
+                finalScore.appendChild(finalText2);             
 
         };
+        // End Final Results function
 
+// Start Quiz by clicking on button on main page
 startQuizEl.addEventListener("click", iterate);
