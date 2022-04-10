@@ -229,7 +229,7 @@ var timeLeft=100;
                 inputLabel.innerHTML = "Enter initials: ";
 
                 var submitButton = document.createElement("button");
-                submitButton.className = "submitBtn";
+                submitButton.className = "btn";
                 submitButton.setAttribute("id", "submitBtn");
                 submitButton.textContent = "Submit";
 
@@ -267,8 +267,23 @@ var timeLeft=100;
                 finalScore.appendChild(finalText1);
                 finalScore.appendChild(finalText2);
 
+                var returnButton = document.createElement("button");
+                returnButton.className = "btn";
+                returnButton.setAttribute("id", "returnBtn");
+                returnButton.textContent = "Return to Main Page";
+
+                finalScore.appendChild(returnButton);
+
+                // returnButton.addEventListener(click, function() {
+                //         // window.location;
+                // });
+
+
                 
 
+
         }
+
+
 
 startQuizEl.addEventListener("click", iterate);
