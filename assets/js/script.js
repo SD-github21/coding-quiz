@@ -161,26 +161,32 @@ var quiz = function (id) {
                              timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                         }
+                        else if (questions[id] > 5 || timeLeft === 0) {
+                                results();
+                                
+                        } 
+        
                         else {
                              timeLeft = timeLeft - 15;
                              timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                                 
-                        }})             
-                                      
+                        }});   
+                        
                 
+               
         };
+
+        
 
 var timeLeft=100;
         function timer() {
                 var timeInterval = setInterval(function () {
-                  //starting at time 75 if the time is > 0 then it will subtract 1 per second
                   if (timeLeft > 1) {
                     timerEl.textContent = "Timer: " + timeLeft;
                     timeLeft--;
                   } 
-
-        
+                  
                   else { 
                     timerEl.textContent = '';
                     clearInterval(timeInterval);
@@ -190,19 +196,24 @@ var timeLeft=100;
 
         var iterate = function(){
                 var id = 0;
-
                 timer();
                 quiz(id);
                 if (id < questions.length) {
-                next.addEventListener("click", function() {
+                        next.addEventListener("click", function() {
                         id++
                         quiz(id);
                         console.log(id);
-                })
+                })}
+                //  else if (id >5 || timeLeft === 0) {
+                //         results();
+                //   }
                       
-                } 
+                
                  
              };
 
+        var results = function() {
+                mainEl.innerHTML ="";
+        }
 
 startQuizEl.addEventListener("click", iterate);
