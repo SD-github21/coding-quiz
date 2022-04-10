@@ -9,6 +9,9 @@ var nextEl = document.createElement("button");
                 nextEl.className = "choice";
                 nextEl.setAttribute("id", "next");
 
+var timerEl = document.querySelector("#timer");
+
+
 
 var questions = [
 
@@ -54,9 +57,9 @@ var questions = [
         { id: 4,
                 question: "A very useful tool used during development and debugging for printing content to the debugger is:  ",
                 answer: [{ choice: "1. JavaScript", correctAnswer: false},
-                         { choice: "2. terminal/bash", correctAnswer: true},
+                         { choice: "2. terminal/bash", correctAnswer: false},
                          { choice: "3. for loops", correctAnswer: false},
-                         { choice: "4. console.log", correctAnswer: false}
+                         { choice: "4. console.log", correctAnswer: true}
                         ]                       
         }                 
 ];
@@ -64,7 +67,6 @@ console.log(questions);
 
 var quiz = function (id) {
                 
-
                 // //set the page to blank
                 instructionsEl.innerHTML = "";
 
@@ -90,9 +92,6 @@ var quiz = function (id) {
                 choice4El.className = "choice";
                 choice4El.setAttribute("id", "choice4");
 
-                // var nextEl = document.createElement("button");
-                // nextEl.className = "choice";
-                // nextEl.setAttribute("id", "next");
 
                 choicesEl.appendChild(choice1El);
                 choicesEl.appendChild(choice2El);
@@ -126,59 +125,46 @@ var quiz = function (id) {
                 choice1.addEventListener("click", () => {
                 selected = choice1.value;
                 console.log(selected);
-                    })
+                });
                     
                 choice2.addEventListener("click", () => {
                 selected = choice2.value;
                 console.log(selected);
-                     })
+                     });
                 
                 choice3.addEventListener("click", () => {
                 selected = choice3.value;
                 console.log(selected);
-                     })
+                     });
                                     
                 choice4.addEventListener("click", () => {
                 selected = choice4.value;
                 console.log(selected);
-                      })
+                      });
                 
-  
-
-                // if (selected === false) {
-                //         timeLeft = timeLeft - 15;
-                //         console.log(timeLeft);
-                // }
-                // else {
-                //         timeLeft=timeLeft
-                // }
+                  if (selected == false) {
+                        timeLeft = timeLeft - 15;
+                        timerEl.innerHtML = "Timer: " + timeLeft;;
+                        console.log(timeLeft);
+                       }
+   
+                
 
        
                 
                 
         };
-
-
-        var timeLeft=75;
+var timeLeft =75;
         function timer() {
-                // var timeLeft = 75;        
-                var timerEl = document.querySelector("#timer");
-                console.log(timerEl);
-              
                 var timeInterval = setInterval(function () {
                   //starting at time 75 if the time is > 0 then it will subtract 1 per second
                   if (timeLeft > 1) {
                     timerEl.textContent = "Timer: " + timeLeft;
                     timeLeft--;
-                  } //
-                
+                  } 
 
-                //   else if (id=0) {
-                //         timerEl.textContent = '';
-                //         clearInterval(timeInterval);                          
-                //   }
-
-                  else { //once it hits 0, it clears the timer, and then also calls displayMessage function, and waits 1000 milliseconds before running the next function
+        
+                  else { 
                     timerEl.textContent = '';
                     clearInterval(timeInterval);
                     }
