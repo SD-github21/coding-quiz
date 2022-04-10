@@ -119,13 +119,11 @@ var quiz = function (id) {
                 choice1El.addEventListener("click", () => {
                         if (questions[id].correct === choice1El.textContent) {
                              timeLeft = timeLeft;
-                             timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                         }  
         
                         else {
                              timeLeft = timeLeft - 15;
-                             timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                                 
                         }});
@@ -133,12 +131,10 @@ var quiz = function (id) {
                 choice2El.addEventListener("click", () => {
                         if (questions[id].correct === choice2El.textContent) {
                             timeLeft = timeLeft;
-                            timerEl.innerHtML = "Timer: " + timeLeft;;
                             console.log(timeLeft);
                                 }
                                 else {
                                      timeLeft = timeLeft - 15;
-                                     timerEl.innerHtML = "Timer: " + timeLeft;;
                                      console.log(timeLeft);
                                         
                                 }})
@@ -146,12 +142,10 @@ var quiz = function (id) {
                 choice3El.addEventListener("click", () => {
                         if (questions[id].correct === choice3El.textContent) {
                              timeLeft = timeLeft;
-                             timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                         }
                         else {
                              timeLeft = timeLeft - 15;
-                             timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                                 
                         }})
@@ -159,18 +153,14 @@ var quiz = function (id) {
                 choice4El.addEventListener("click", () => {
                         if (questions[id].correct === choice4El.textContent) {
                              timeLeft = timeLeft;
-                             timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                         }
         
                         else {
                              timeLeft = timeLeft - 15;
-                             timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                                 
                         }});   
-                        
-                
                
         };
 
@@ -203,6 +193,10 @@ var timeLeft=100;
                                 console.log(id);
                         }
                         else if (id >= questions.length - 1 || timeLeft === 0) {
+                                timerEl.textContent = "";
+                                clearInterval(timeInterval);
+                                console.log("Final time =" + timeLeft);
+                                localStorage.setItem("Final time", timeLeft);
                                 results();
                                 
                         }
@@ -212,6 +206,12 @@ var timeLeft=100;
 
         var results = function() {
                 mainEl.innerHTML ="";
+                localStorage.getItem("Final time", timeLeft);
+                
+                
+                timerEl.textContent = "Time: " + timeLeft;
+                
+
         }
 
 startQuizEl.addEventListener("click", iterate);
