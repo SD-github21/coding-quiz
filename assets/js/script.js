@@ -267,23 +267,11 @@ var timeLeft=100;
                 finalScore.appendChild(finalText1);
                 finalScore.appendChild(finalText2);
 
-                var returnButton = document.createElement("button");
-                returnButton.className = "btn";
-                returnButton.setAttribute("id", "returnBtn");
-                returnButton.textContent = "Return to Main Page";
-
-                finalScore.appendChild(returnButton);
-
-                // returnButton.addEventListener(click, function() {
-                //         // window.location;
-                // });
 
 
                 
 
 
-        }
-
-
+        };
 
 startQuizEl.addEventListener("click", iterate);
