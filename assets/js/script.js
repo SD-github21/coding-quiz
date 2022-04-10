@@ -1,4 +1,5 @@
 var mainEl = document.querySelector("#page-content");
+var scoreElLink = document.querySelector("#high-scores");
 var instructionsEl = document.querySelector("#instructions"); 
 var startQuizEl = document.querySelector("#start-quiz"); 
 var quizEl = document.querySelector("#quiz")
@@ -198,14 +199,14 @@ var timeLeft=100;
                                 clearInterval(timeInterval);
                                 console.log("Final time =" + timeLeft);
                                 localStorage.setItem("Final time", timeLeft);
-                                results();
+                                submitInit();
                                 
                         }
                 });                
                  
              };
 
-        var results = function() {
+        var submitInit = function() {
                 choicesEl.innerHTML ="";
                 questionEl.innerHTML ="";
                 localStorage.getItem("Final time", timeLeft);
@@ -217,12 +218,43 @@ var timeLeft=100;
                 var inputText2 = document.createElement("h3");
                 inputText2.textContent = "Your final score is " + timeLeft+".";
 
+                var inputBox = document.createElement("input");
+                inputBox.type = "text";
+                inputBox.setAttribute("id", "input");
+
+                var inputLabel = document.createElement("Label");
+                inputLabel.setAttribute("for", "input");
+                inputLabel.setAttribute("id", "label");
+                inputLabel.innerHTML = "Enter initials: ";
+
+                var submitButton = document.createElement("button");
+                submitButton.className = "submitBtn";
+                submitButton.setAttribute("id", "submitBtn");
+                submitButton.textContent = "Submit";
+
+
+
 
 
                 inputEl.appendChild(inputText1);
                 inputEl.appendChild(inputText2);
+                inputEl.appendChild(inputLabel);
+                inputEl.appendChild(inputBox);
+                inputEl.appendChild(submitButton);
                 
                 
+                submitButton.addEventListener("click", function submit () {
+                        console.log(inputBox.value);
+                        localStorage.setItem("initials", inputBox.value);   
+                        finalResults();            
+        });
+
+        };
+
+        var finalResults = function() {
+               inputEl.innerHTML = "" ;
+               timerEl.innerHTML ="";
+               scoreElLink.innerHTML = "";
 
         }
 
