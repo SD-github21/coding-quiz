@@ -16,21 +16,23 @@ var timerEl = document.querySelector("#timer");
 var questions = [
 
     { id: 0,
-    question: "Commonly used data types DO Not include the following: ",
-    answer: [{ choice: "1. strings", correctAnswer: false},
+        question: "Commonly used data types DO Not include the following: ",
+        answer: [{ choice: "1. strings", correctAnswer: false},
              { choice: "2. booleans", correctAnswer: false},
              { choice: "3. alerts", correctAnswer: true},
              { choice: "4. numbers", correctAnswer: false}
-            ]
+            ],
+        correct: "3. alerts"
         },
 
     { id: 1,
-    question: "The condition in an if/else statement is enclosed with______________. ",
-    answer: [{ choice: "1. quotes", correctAnswer: false},
+        question: "The condition in an if/else statement is enclosed with______________. ",
+        answer: [{ choice: "1. quotes", correctAnswer: false},
             { choice: "2. curly braces", correctAnswer: true},
             { choice: "3. parentheses", correctAnswer: false},
             { choice: "4. square brackets", correctAnswer: false}
-            ]
+            ],
+        correct: "2. curly braces"
     
         },
 
@@ -40,7 +42,8 @@ var questions = [
                 { choice: "2. other arrays", correctAnswer: false},
                 { choice: "3. booleans", correctAnswer: false},
                 { choice: "4. all of the above", correctAnswer: true}
-                ]
+                ],
+        correct: "4. all of the above"
         
         },
     
@@ -50,7 +53,8 @@ var questions = [
                         { choice: "2. curly braces", correctAnswer: false},
                         { choice: "3. quotes", correctAnswer: true},
                         { choice: "4. parentheses", correctAnswer: false}
-                        ]
+                        ],
+                correct: "3. quotes"
                 
                 },
             
@@ -60,7 +64,8 @@ var questions = [
                          { choice: "2. terminal/bash", correctAnswer: false},
                          { choice: "3. for loops", correctAnswer: false},
                          { choice: "4. console.log", correctAnswer: true}
-                        ]                       
+                        ],
+                correct: "4. console.log"                        
         }                 
 ];
 console.log(questions);
@@ -78,6 +83,7 @@ var quiz = function (id) {
 
                 var choice1El = document.createElement("button");
                 choice1El.className = "choice";
+        
                 choice1El.setAttribute("id", "choice1");
 
                 var choice2El = document.createElement("button");
@@ -100,61 +106,72 @@ var quiz = function (id) {
                 choicesEl.appendChild(nextEl);
 
 
-                // setting answer choices to variables
-                var choice1 = document.querySelector("#choice1");
-                var choice2 = document.querySelector("#choice2");
-                var choice3 = document.querySelector("#choice3");
-                var choice4 = document.querySelector("#choice4");
                 
-                // setting answer choice text
-                choice1.textContent = questions[id].answer[0].choice;
-                choice2.textContent = questions[id].answer[1].choice;
-                choice3.textContent = questions[id].answer[2].choice;
-                choice4.textContent = questions[id].answer[3].choice;
+                // // setting answer choice text
+                choice1El.textContent = questions[id].answer[0].choice;
+                choice2El.textContent = questions[id].answer[1].choice;
+                choice3El.textContent = questions[id].answer[2].choice;
+                choice4El.textContent = questions[id].answer[3].choice;
                 nextEl.textContent = "Next";
               
-                // linking the true or false values to the choices
-                choice1.value = questions[id].answer[0].correctAnswer;
-                choice2.value = questions[id].answer[1].correctAnswer;
-                choice3.value = questions[id].answer[2].correctAnswer;
-                choice4.value = questions[id].answer[3].correctAnswer;
+ 
+                // Deduct points for timer when an answer choice is wrong
+                choice1El.addEventListener("click", () => {
+                        if (questions[id].correct === choice1El.textContent) {
+                             timeLeft = timeLeft;
+                             timerEl.innerHtML = "Timer: " + timeLeft;;
+                             console.log(timeLeft);
+                        }
+                        else {
+                             timeLeft = timeLeft - 15;
+                             timerEl.innerHtML = "Timer: " + timeLeft;;
+                             console.log(timeLeft);
+                                
+                        }});
+                
+                choice2El.addEventListener("click", () => {
+                        if (questions[id].correct === choice2El.textContent) {
+                            timeLeft = timeLeft;
+                            timerEl.innerHtML = "Timer: " + timeLeft;;
+                            console.log(timeLeft);
+                                }
+                                else {
+                                     timeLeft = timeLeft - 15;
+                                     timerEl.innerHtML = "Timer: " + timeLeft;;
+                                     console.log(timeLeft);
+                                        
+                                }})
 
-                var selected = "";
-  
-                // Show user's choices for each question
-                choice1.addEventListener("click", () => {
-                selected = choice1.value;
-                console.log(selected);
-                });
-                    
-                choice2.addEventListener("click", () => {
-                selected = choice2.value;
-                console.log(selected);
-                     });
-                
-                choice3.addEventListener("click", () => {
-                selected = choice3.value;
-                console.log(selected);
-                     });
-                                    
-                choice4.addEventListener("click", () => {
-                selected = choice4.value;
-                console.log(selected);
-                      });
-                
-                  if (selected == false) {
-                        timeLeft = timeLeft - 15;
-                        timerEl.innerHtML = "Timer: " + timeLeft;;
-                        console.log(timeLeft);
-                       }
-   
-                
+                choice3El.addEventListener("click", () => {
+                        if (questions[id].correct === choice3El.textContent) {
+                             timeLeft = timeLeft;
+                             timerEl.innerHtML = "Timer: " + timeLeft;;
+                             console.log(timeLeft);
+                        }
+                        else {
+                             timeLeft = timeLeft - 15;
+                             timerEl.innerHtML = "Timer: " + timeLeft;;
+                             console.log(timeLeft);
+                                
+                        }})
 
-       
-                
+                choice4El.addEventListener("click", () => {
+                        if (questions[id].correct === choice4El.textContent) {
+                             timeLeft = timeLeft;
+                             timerEl.innerHtML = "Timer: " + timeLeft;;
+                             console.log(timeLeft);
+                        }
+                        else {
+                             timeLeft = timeLeft - 15;
+                             timerEl.innerHtML = "Timer: " + timeLeft;;
+                             console.log(timeLeft);
+                                
+                        }})             
+                                      
                 
         };
-var timeLeft =75;
+
+var timeLeft=100;
         function timer() {
                 var timeInterval = setInterval(function () {
                   //starting at time 75 if the time is > 0 then it will subtract 1 per second
@@ -171,17 +188,19 @@ var timeLeft =75;
                 }, 1000);
               };
 
-        var id = 0;
         var iterate = function(){
+                var id = 0;
+
                 timer();
                 quiz(id);
                 if (id < questions.length) {
                 next.addEventListener("click", function() {
                         id++
                         quiz(id);
+                        console.log(id);
                 })
-                        
-                }
+                      
+                } 
                  
              };
 
