@@ -167,23 +167,23 @@ var quiz = function (id) {
         
 
 var timeLeft=100;
-        function timer() {
-                var timeInterval = setInterval(function () {
-                  if (timeLeft > 1) {
-                    timerEl.textContent = "Timer: " + timeLeft;
-                    timeLeft--;
-                  } 
-                  
-                  else { 
-                    timerEl.textContent = '';
-                    clearInterval(timeInterval);
-                    }
-                }, 1000);
-              };
+
 
         var iterate = function(){
                 var id = 0;
-                timer();
+
+                var timeInterval = setInterval(function () {
+                        if (timeLeft > 1) {
+                          timerEl.textContent = "Timer: " + timeLeft;
+                          timeLeft--;
+                        } 
+                        
+                        else { 
+                          timerEl.textContent = '';
+                          clearInterval(timeInterval);
+                          }
+                      }, 1000);
+      
                 quiz(id);
 
                 next.addEventListener("click", function () {
@@ -207,8 +207,6 @@ var timeLeft=100;
         var results = function() {
                 mainEl.innerHTML ="";
                 localStorage.getItem("Final time", timeLeft);
-                
-                
                 timerEl.textContent = "Time: " + timeLeft;
                 
 
