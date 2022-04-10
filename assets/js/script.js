@@ -122,10 +122,6 @@ var quiz = function (id) {
                              timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                         }  
-                         else if (questions[id] > 5 || timeLeft === 0) {
-                                results();
-                                
-                        } 
         
                         else {
                              timeLeft = timeLeft - 15;
@@ -199,17 +195,18 @@ var timeLeft=100;
                 var id = 0;
                 timer();
                 quiz(id);
-                if (id < questions.length) {
-                        next.addEventListener("click", function() {
-                        id++
-                        quiz(id);
-                        console.log(id);
-                })}
-                //  else if (id >5 || timeLeft === 0) {
-                //         results();
-                //   }
-                      
-                
+
+                next.addEventListener("click", function () {
+                        if (id < questions.length - 1) {
+                                id++;
+                                quiz(id);
+                                console.log(id);
+                        }
+                        else if (id >= questions.length - 1 || timeLeft === 0) {
+                                results();
+                                
+                        }
+                });                
                  
              };
 
