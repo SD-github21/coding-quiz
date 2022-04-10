@@ -121,7 +121,12 @@ var quiz = function (id) {
                              timeLeft = timeLeft;
                              timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
-                        }
+                        }  
+                         else if (questions[id] > 5 || timeLeft === 0) {
+                                results();
+                                
+                        } 
+        
                         else {
                              timeLeft = timeLeft - 15;
                              timerEl.innerHtML = "Timer: " + timeLeft;;
@@ -161,10 +166,6 @@ var quiz = function (id) {
                              timerEl.innerHtML = "Timer: " + timeLeft;;
                              console.log(timeLeft);
                         }
-                        else if (questions[id] > 5 || timeLeft === 0) {
-                                results();
-                                
-                        } 
         
                         else {
                              timeLeft = timeLeft - 15;
