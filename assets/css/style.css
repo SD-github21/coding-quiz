@@ -5,6 +5,11 @@ header {
     padding: 20px 50px;
 }
 
+.header-text {
+    font-weight: bold;
+    color: #00008B;
+}
+
 main {
     display:flex;
     justify-content: center;
@@ -20,7 +25,18 @@ main {
     width: 50%;
     flex-direction: column;
     align-items: center;
+    font-weight: bold;
+    color: #00008B;
 
+}
+
+.instructions h2 {
+    font-size: 30px;
+}
+
+.instructions p {
+
+    font-size: 20px;
 }
 
 .quiz {
@@ -31,11 +47,14 @@ main {
     width: 50%;
     flex-direction: column;
     align-items: center;
+    color: #00008B;
+    font-weight: bold;
+    font-size: 20px;
 
 }
 
-.answer-choices {
 
+.answer-choices {
     display:flex;
     justify-content:center;
     flex-wrap: wrap;
@@ -46,3 +65,27 @@ main {
 
 }
 
+.choice  {
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    background-color: rgb(240, 8, 124);
+    color: whitesmoke;
+}
+
+.choice:focus {
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #00008B;
+    color: whitesmoke;
+}
+
+.btn {
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    background-color: rgb(240, 8, 124);
+    color: whitesmoke;
+
+}

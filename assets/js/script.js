@@ -8,6 +8,8 @@ var quizEl = document.querySelector("#quiz")
 var choicesEl = document.querySelector("#choices");
 var questionEl = document.querySelector("#question");
 
+
+// create next button and make it accessible outside its function
 var nextEl = document.createElement("button");
                 nextEl.className = "choice";
                 nextEl.setAttribute("id", "next");
@@ -85,7 +87,7 @@ var questions = [
 
                 // create the quiz questions and answer choices               
                 questionEl.textContent = questions[id].question;
-
+                
                 var choice1El = document.createElement("button");
                 choice1El.className = "choice";       
                 choice1El.setAttribute("id", "choice1");
@@ -102,8 +104,7 @@ var questions = [
                 choice4El.className = "choice";
                 choice4El.setAttribute("id", "choice4");
 
-
-                // append choices to the div
+                // append buttons to the div
                 choicesEl.appendChild(choice1El);
                 choicesEl.appendChild(choice2El);
                 choicesEl.appendChild(choice3El);
